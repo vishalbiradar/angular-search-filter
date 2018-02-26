@@ -65,6 +65,6 @@ So the actual iteration look like:
   
   ## Demo
   
-  https://stackblitz.com/edit/angular-search-demo
+  https://stackblitz.com/edit/angular-search-filter
 
 
