@@ -5,6 +5,7 @@ Searching/filtering an object from the list of object using ng2-search-filter.
 Steps:
 
 1. Install the required packages
+
   ```sh
   npm install ng2-search-filter --save
   ```
@@ -41,7 +42,7 @@ Steps:
   ```
 4. Let's create a search input field
 
-  ```js
+  ```html
   <input type="text" [(ngModel)]="searchText">
   ```
 
@@ -54,7 +55,7 @@ will do the magic of searching/filtering the object/element from the list.
 
 So the actual iteration look like:
 
-  ```js
+  ```html
    <div *ngFor="let hero of heroes | filter: searchText">
           <span>{{hero.id}}</span>
           <span>{{hero.name}}</span>
