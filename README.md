@@ -1,27 +1,69 @@
-# AngularSearch
+# Angular Search
 
-This project was generated with [Angular CLI](https://github.com/angular/angular-cli) version 1.7.1.
+Searching/filtering an object from the list of object using ng2-search-filter.
 
-## Development server
+Steps:
 
-Run `ng serve` for a dev server. Navigate to `http://localhost:4200/`. The app will automatically reload if you change any of the source files.
+1. Install the required packages
+  ```sh
+  npm install ng2-search-filter --save
+  ```
 
-## Code scaffolding
+2. Import Ng2SearchPipeModule from ng2-search-filter
 
-Run `ng generate component component-name` to generate a new component. You can also use `ng generate directive|pipe|service|class|guard|interface|enum|module`.
+  app.module.ts
 
-## Build
+  ```js
 
-Run `ng build` to build the project. The build artifacts will be stored in the `dist/` directory. Use the `-prod` flag for a production build.
+  // search module
+  import { Ng2SearchPipeModule } from 'ng2-search-filter';
 
-## Running unit tests
+  @NgModule({
+    ....
+    ....
 
-Run `ng test` to execute the unit tests via [Karma](https://karma-runner.github.io).
+    imports: [
+      Ng2SearchPipeModule
+    ]
+  })
+  export class AppModule { }
+  ```
 
-## Running end-to-end tests
+3. Create a mock list in app.component.ts file
 
-Run `ng e2e` to execute the end-to-end tests via [Protractor](http://www.protractortest.org/).
+  ```js
+  heroes = [
+      { id: 11, name: 'Mr. Nice', country: 'India' },
+      { id: 12, name: 'Narco' , country: 'USA'},
+      ...
+      ...
+    ];
+  ```
+4. Let's create a search input field
 
-## Further help
+  ```js
+  <input type="text" [(ngModel)]="searchText">
+  ```
 
-To get more help on the Angular CLI use `ng help` or go check out the [Angular CLI README](https://github.com/angular/angular-cli/blob/master/README.md).
+5. Let's apply filter logic on the list
+
+  ```
+   filter: searchText
+  ```
+will do the magic of searching/filtering the object/element from the list.
+
+So the actual iteration look like:
+
+  ```js
+   <div *ngFor="let hero of heroes | filter: searchText">
+          <span>{{hero.id}}</span>
+          <span>{{hero.name}}</span>
+          <span>{{hero.country}}</span>
+   </div>
+  ```
+  
+  ## Demo
+  
+  https://stackblitz.com/edit/angular-search-demo
+
+
